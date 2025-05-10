@@ -1,8 +1,19 @@
 ﻿@using Platzi_Blazor.Layout.Common.Title
+@inject IConfiguration config;
 @page "/"
 
 <TitleComponent Title="Home" Size=20 Color="rgba(255,0,0,0.7)"></TitleComponent>
 
-<h1>Hello, mi genteeeeee!</h1>
+
+<h5>@helloMessage</h5>
 
 Esta es mi segunda aplicación de blazor
+
+@code{
+    public string helloMessage = "";
+
+    protected override void OnInitialized()
+    {
+        helloMessage = config["helloMessage"]!; 
+    }
+}
