@@ -1,7 +1,8 @@
-﻿@page "/counter/{currentCountParameter?}"
+﻿@using Platzi_Blazor.Layout.Common.Title
+@page "/counter/{currentCountParameter?}"
 @inject ILogger<Counter> logger;
 
-<PageTitle>Counter</PageTitle>
+<TitleComponent Title="Counter" Size=20 Color="rgba(0,255,0,0.7)"></TitleComponent>
 
 <h1>Counter</h1>
 
