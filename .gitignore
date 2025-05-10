@@ -1,0 +1,56 @@
+## Archivos de usuario de Visual Studio
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Salidas de compilación
+bin/
+obj/
+
+## Dependencias de NuGet
+*.nupkg
+packages/
+*.snupkg
+
+## Archivos de publicación
+publish/
+out/
+wwwroot/dist/
+
+## Archivos generados de Razor
+**/Generated/
+
+## Configuración local
+appsettings.Development.json
+appsettings.Local.json
+
+## Logs y archivos temporales
+*.log
+*.tmp
+*.temp
+
+## Sistema operativo
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Archivos de test coverage
+TestResults/
+coverage*.json
+coverage*.xml
+coverage*.info
+lcov-report/
+
+## Archivos secretos (si usas secretos de .NET)
+secrets.json
+
+## Archivos de Rider / JetBrains
+.idea/
+*.sln.iml
+
+## Node (si usas npm en wwwroot)
+node_modules/
