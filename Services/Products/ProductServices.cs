@@ -1,6 +1,5 @@
 ﻿using System.Net.Http.Json;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 namespace Platzi_Blazor;
 public class ProductServices : IProductServices
 {
@@ -24,7 +23,7 @@ public class ProductServices : IProductServices
     }
     public async Task Create(Product producto)
     {
-        var response = await _httpClient.PostAsync("/v1/products", JsonContent.Create(producto));
+        var response = await _httpClient.PostAsync("v1/products", JsonContent.Create(producto));
         var content = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)

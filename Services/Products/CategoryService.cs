@@ -13,7 +13,7 @@ public class CategoryService : ICategoryService
     }
     public async Task<List<Category>?> Get()
     {
-        var result = await _httpClient.GetAsync("/v1/categories");
+        var result = await _httpClient.GetAsync("v1/categories");
         var content = await result.Content.ReadAsStringAsync();
         if(!result.IsSuccessStatusCode)
         {
@@ -23,7 +23,7 @@ public class CategoryService : ICategoryService
     }
     public async Task Create(Category category)
     {
-        var result = await _httpClient.PostAsync("/v1/categories", JsonContent.Create(category));
+        var result = await _httpClient.PostAsync("v1/categories", JsonContent.Create(category));
         var content = await result.Content.ReadAsStringAsync();
         if(!result.IsSuccessStatusCode)
         {

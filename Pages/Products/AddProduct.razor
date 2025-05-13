@@ -1,0 +1,66 @@
+﻿@page "/addproduct"
+@using Platzi_Blazor.Layout.Common.Title
+@using Platzi_Blazor.Models.Products
+@inject ICategoryService categoryService;
+@inject IProductServices productService;
+@inject NavigationManager NavigationManager;
+
+<PageTitle>Products</PageTitle>
+
+<TitleComponent Title="Crear Productos" Size=20 Color="rgba(255,0,255,0.7)"></TitleComponent>
+
+<button class="btn btn-dark text-light px-3" @onclick="@(() => NavigationManager.NavigateTo("/product"))">
+    Productos    
+</button>
+<EditForm Model="@product" OnSubmit="@Save">
+    <div class="row">
+        <div class="col-8 form-group">
+            <label for="title" class="col-form-label">Title</label>
+            <InputText id="title" @bind-Value="product.Title" required class="form-control"></InputText>
+        </div>
+        <div col-8 form-group>
+            <label for="categoryId" class="col-form-label">Categoría</label>
+            <InputSelect id="categoryId" @bind-Value="product.CategoryId" class="form-control">
+                <option value="">Seleccione una categoría</option>
+                @foreach(var category in categorias)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="col-8 form-group">
+            <label for="title" class="col-form-label">Precio</label>
+            <InputNumber id="price" @bind-Value="product.price" required class="form-control"></InputNumber>
+        </div>
+        <div class="col-8 form-group">
+            <label for="file" class="col-form-label">Image</label>
+            <InputText id="file" @bind-Value="product.Image" required class="form-control"></InputText>
+        </div>
+        <div class="col-8 form-group">
+            <label for="description" class="col-form-label">Descripcion</label>
+            <InputText id="description" @bind-Value="product.Description" required class="form-control"></InputText>
+        </div>
+        <div class="col-8">
+            <button class="btn btn-outline-dark w-100" type="submit">
+                Guardar
+            </button>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    private Product product = new Product();
+    private List<Category>? categorias = new List<Category>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        categorias = await categoryService.Get();
+    }
+    private async Task Save()
+    {
+        product.Images = new string[1] { product.Image };
+        await productService.Create(product);
+        NavigationManager.NavigateTo("/product");
+    }
+}

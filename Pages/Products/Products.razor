@@ -1,11 +1,16 @@
 ﻿@using Platzi_Blazor.Layout.Common.Title
 @page "/product"
-@inject ILogger<Counter> logger;
 @inject IProductServices _productServiceee;
 
 <PageTitle>Products</PageTitle>
 
 <TitleComponent Title="Productos" Size=20 Color="rgba(0,255,0,0.7)"></TitleComponent>
+
+<button class="btn btn-dark text-light px-3 mb-2">
+    <NavLink class="nav-link" href="addproduct">
+        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Crear Producto
+    </NavLink>
+</button>
 
 @if (products.Any())
 {
